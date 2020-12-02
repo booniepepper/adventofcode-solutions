@@ -1,5 +1,5 @@
-USING: combinators formatting io.files io.encodings.utf8 kernel
-locals math math.combinatorics math.parser prettyprint
+USING: combinators formatting fry io.files io.encodings.utf8
+kernel math math.combinatorics math.parser prettyprint
 sequences ;
 IN: solution
 
@@ -9,8 +9,8 @@ IN: solution
 ;
 
 ! Return the product of n members that match a given sum k.
-:: solve ( seq n k -- seq )
-    seq n [ sum k = ] filter-combinations first
+: solve ( seq n k -- seq )
+    '[ sum _ = ] filter-combinations first
 ;
 
 : print-solution ( seq -- )
