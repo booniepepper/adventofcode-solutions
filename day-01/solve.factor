@@ -1,4 +1,4 @@
-USING: io.files io.encodings.utf8 kernel locals math
+USING: formatting io.files io.encodings.utf8 kernel locals math
 math.combinatorics math.parser prettyprint sequences ;
 IN: solution
 
@@ -8,12 +8,17 @@ IN: solution
 ;
 
 ! Return the product of n members that match a given sum k.
-:: solve ( seq n k -- prod )
+:: solve ( seq n k -- seq )
     seq n all-combinations
-    [ sum k = ] find product nip
+    [ sum k = ] find nip
+;
+
+: print-solution ( seq -- )
+    [ "%[%d, %] : " printf ] [ product . ] bi
 ;
 
 "./input" read-input
-[ 2 2020 solve . ]
-[ 3 2020 solve . ] bi
+[ 2 2020 solve print-solution ]
+[ 3 2020 solve print-solution ] 
+[ 4 2020 solve print-solution ] tri
 
