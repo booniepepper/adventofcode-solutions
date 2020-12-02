@@ -1,0 +1,23 @@
+#!/usr/bin/env escript
+
+main(_) ->
+    {ok, InputRaw} = file:read_file("./input"),
+    Lines = lists:map(fun erlang:binary_to_list/1, string:split(InputRaw, "\n", all)),
+    NumValid = solve(Lines),
+    io:format("Valid: ~w~n", [NumValid]).
+
+solve(Lines) -> solve(Lines, 0).
+
+solve([], Count) -> Count;
+solve([""|_], Count) -> Count;
+solve([A | Rest], Count) ->
+    {Min, B} = string:to_integer(A),
+    {Max, C} = string:to_integer(string:prefix(B, "-")),
+    [Target | D] = string:next_grapheme(string:prefix(C, " ")),
+    Text = string:prefix(D, ": "),
+    Occurrences = length(lists:filter(fun(Char) -> Char =:= Target end, Text)),
+    % io:format("min: ~w, occ: ~w, max: ~w, target: ~c, text: ~s~n", [Min, Occurrences, Max, Target, Text]),
+    if (Min =< Occurrences) andalso (Occurrences =< Max) -> solve(Rest, Count + 1);
+        true -> solve(Rest, Count)
+    end.
+
