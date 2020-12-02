@@ -3,21 +3,38 @@
 main(_) ->
     {ok, InputRaw} = file:read_file("./input"),
     Lines = lists:map(fun erlang:binary_to_list/1, string:split(InputRaw, "\n", all)),
-    NumValid = solve(Lines),
-    io:format("Valid: ~w~n", [NumValid]).
+    NumOldValid = solve(Lines, old),
+    io:format("Valid by old method: ~w~n", [NumOldValid]),
+    NumValid = solve(Lines, new),
+    io:format("Valid by new method: ~w~n", [NumValid]).
 
-solve(Lines) -> solve(Lines, 0).
+solve(Lines, old) -> solve_old(Lines, 0);
+solve(Lines, new) -> solve_new(Lines, 0).
 
-solve([], Count) -> Count;
-solve([""|_], Count) -> Count;
-solve([A | Rest], Count) ->
+solve_old([], Count) -> Count;
+solve_old([""|_], Count) -> Count;
+solve_old([A | Rest], Count) ->
     {Min, B} = string:to_integer(A),
     {Max, C} = string:to_integer(string:prefix(B, "-")),
     [Target | D] = string:next_grapheme(string:prefix(C, " ")),
     Text = string:prefix(D, ": "),
     Occurrences = length(lists:filter(fun(Char) -> Char =:= Target end, Text)),
     % io:format("min: ~w, occ: ~w, max: ~w, target: ~c, text: ~s~n", [Min, Occurrences, Max, Target, Text]),
-    if (Min =< Occurrences) andalso (Occurrences =< Max) -> solve(Rest, Count + 1);
-        true -> solve(Rest, Count)
+    if (Min =< Occurrences) andalso (Occurrences =< Max) -> solve_old(Rest, Count + 1);
+        true -> solve_old(Rest, Count)
+    end.
+
+solve_new([], Count) -> Count;
+solve_new([""|_], Count) -> Count;
+solve_new([A | Rest], Count) ->
+    {Index1, B} = string:to_integer(A),
+    {Index2, C} = string:to_integer(string:prefix(B, "-")),
+    [Target | D] = string:next_grapheme(string:prefix(C, " ")),
+    Text = string:prefix(D, ": "),
+    Char1 = lists:nth(Index1, Text),
+    Char2 = lists:nth(Index2, Text),
+    % io:format("index1: ~w, char1: ~c, index2: ~w, char2: ~c, target: ~c, text: ~s~n", [Index1, Char1, Index2, Char2, Target, Text]),
+    if (Char1 =:= Target) xor (Char2 =:= Target) -> solve_new(Rest, Count + 1);
+        true -> solve_new(Rest, Count)
     end.
 
