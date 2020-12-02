@@ -1,3 +1,5 @@
+#!/usr/bin/env factor
+
 USING: combinators formatting fry io.files io.encodings.utf8
 kernel math math.combinatorics math.parser prettyprint
 sequences ;
