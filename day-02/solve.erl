@@ -3,8 +3,8 @@
 -mode(compile).
 
 main(_) ->
-    {ok, InputRaw} = file:read_file("./input"),
-    Lines = lists:map(fun(Bin) -> parse(binary_to_list(Bin)) end, string:split(InputRaw, "\n", all)),
+    {ok, IoStream} = file:open("./input", [read_ahead]),
+    Lines = parse(IoStream, []),
     io:format("Valid by old method: ~w~n", [solve_old(Lines)]),
     io:format("Valid by new method: ~w~n", [solve_new(Lines)]).
 
@@ -31,11 +31,14 @@ solve_new([{Index1, Index2, Target, Text} | Rest], Acc) ->
     end,
     solve_new(Rest, Acc + Inc).
 
-parse("") -> none;
-parse(Line) ->
-    {A, Line1} = string:to_integer(Line),
-    {B, Line2} = string:to_integer(string:prefix(Line1, "-")),
-    [Char | Line3] = string:next_grapheme(string:prefix(Line2, " ")),
-    Text = string:prefix(Line3, ": "),
-    {A, B, Char, Text}.
+parse(IoStream) -> parse(IoStream, []).
+
+parse(IoStream, Acc) ->
+    {Status, Terms} = io:fread(IoStream, "", "~u-~u ~c: ~s"),
+    case Status of
+        error -> Acc;
+        ok ->
+            [A, B, [Char|_], Text] = Terms,
+            [{A, B, Char, Text} | parse(IoStream)]
+    end.
 
