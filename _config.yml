@@ -13,6 +13,7 @@ url: 'https://hiljusti.github.io'
 
 header_pages:
   - index.md
+  - resources.md
 
 footer: "Come now, let us reason together."
 
