@@ -3,11 +3,13 @@
 Language: JavaScript
 
 ```javascript
-{% include_relative day-04/solve.js %}
+{% include_relative day-04/solve.js -%}
 ```
 
+ 
+
 ```javascript
-{% include_relative day-04/solve2.js %}
+{% include_relative day-04/solve2.js -%}
 ```
 
 # Day 3
@@ -15,7 +17,7 @@ Language: JavaScript
 Language: Ruby
 
 ```ruby
-{% include_relative day-03/solve.rb %}
+{% include_relative day-03/solve.rb -%}
 ```
 
 # Day 2
@@ -23,7 +25,7 @@ Language: Ruby
 Language: Erlang
 
 ```erlang
-{% include_relative day-02/solve.erl %}
+{% include_relative day-02/solve.erl -%}
 ```
 
 # Day 1
@@ -38,6 +40,6 @@ Learn:
 A solution by me (parts 1 and 2)
 
 ```factor
-{% include_relative day-01/solve.factor %}
+{% include_relative day-01/solve.factor -%}
 ```
 
