@@ -2,6 +2,12 @@
 title: /solutions
 ---
 
+{% for post in site.posts %}
+* [{{post.title}}]({{ post.url }})
+{% endfor %}
+
+---
+
 ## day 4
 
 language: JavaScript
