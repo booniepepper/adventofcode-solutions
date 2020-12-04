@@ -1,3 +1,3 @@
 gem "github-pages"
-gem "jekyll-shell-theme"
+gem "jekyll-theme-console"
 

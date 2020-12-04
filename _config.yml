@@ -1,21 +1,9 @@
-title: hiljusti polyglot junk | Advent of Code 2020 Solutions
-email: hiljusti@amazon.com
-description: polyglot solutions, some may even be good!
-baseurl: "/"
-url: https://hiljusti.github.io/adventofcode-2020
-github_username: hiljusti
-
-plugins:
-  - jekyll-remote-theme
-  - jemoji
-
-remote_theme: tareqdandachi/jekyll-shell-theme
-
 highlighter: rouge
 
 header_pages:
   - README.md
   - solutions.md
 
-font-size: large
+style: dark
+listen_for_clients_preferred_style: true
 
