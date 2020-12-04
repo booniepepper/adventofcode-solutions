@@ -1,45 +1,44 @@
-# Day 4
+# solutions
 
-Language: JavaScript
+## day 4
 
-```javascript
-{% include_relative day-04/solve.js -%}
-```
-
- 
+language: JavaScript
 
 ```javascript
-{% include_relative day-04/solve2.js -%}
-```
+{% include_relative day-04/solve.js -%}```
 
-# Day 3
+```javascript
+{% include_relative day-04/solve2.js -%}```
 
-Language: Ruby
+---
+
+## day 3
+
+language: Ruby
 
 ```ruby
-{% include_relative day-03/solve.rb -%}
-```
+{% include_relative day-03/solve.rb -%}```
 
-# Day 2
+---
 
-Language: Erlang
+## day 2
+
+language: Erlang
 
 ```erlang
-{% include_relative day-02/solve.erl -%}
-```
+{% include_relative day-02/solve.erl -%}```
 
-# Day 1
+---
 
-Language: [Factor](https://factorcode.org)
+## day 1
+
+language: [Factor](https://factorcode.org)
 
 Learn:
 * https://andreaferretti.github.io/factor-tutorial/
 * https://www.youtube.com/watch?v=f_0QlhYlS8g
 * https://learnxinyminutes.com/docs/factor/
 
-A solution by me (parts 1 and 2)
-
 ```factor
-{% include_relative day-01/solve.factor -%}
-```
+{% include_relative day-01/solve.factor -%}```
 
