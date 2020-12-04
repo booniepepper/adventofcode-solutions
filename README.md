@@ -16,5 +16,5 @@ quality," or finding the absolute best performing algorithm in
 these, so take all code, especially its quality, with a grain of
 salt.
 
-[Solutions](https://hiljusti.github.io/adventofcode-2020/solutions)
+[Solutions](https://hiljusti.github.io/adventofcode-solutions/solutions)
 

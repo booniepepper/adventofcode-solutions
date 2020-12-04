@@ -4,7 +4,7 @@ title: /solutions
 
 <ul>
   {% for post in site.posts %}
-    <a href="{{ site.url }}/adventofcode-2020/{{ post.url }}">{{ post.title }}</a>
+    <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
   {% endfor %}
 </ul>
 
