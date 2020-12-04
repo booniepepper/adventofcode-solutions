@@ -1,4 +1,6 @@
-# solutions
+---
+title: /solutions
+---
 
 ## day 4
 
