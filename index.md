@@ -1,7 +1,7 @@
 ---
 title: /home
 layout: home
-permalink: /
+permalink: /home
 ---
 
 {% include_relative README.md %}
