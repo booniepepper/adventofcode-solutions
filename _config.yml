@@ -1,13 +1,14 @@
-title: 'a hiljusti polyglot adventure | Advent of Code 2020 Solutions'
-description: 'a hiljusti polyglot adventure | Advent of Code 2020 Solutions'
-baseurl: '/adventofcode-2020'
-url: 'https://hiljusti.github.io'
-
 highlighter: rouge
+markdown: kramdown
 
 remote_theme: b2a3e8/jekyll-theme-console
 
 style: dark
+
+title: 'a hiljusti polyglot adventure | Advent of Code 2020 Solutions'
+description: 'a hiljusti polyglot adventure | Advent of Code 2020 Solutions'
+baseurl: '/adventofcode-2020'
+url: 'https://hiljusti.github.io'
 
 header_pages:
   - index.md
