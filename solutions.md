@@ -2,9 +2,11 @@
 title: /solutions
 ---
 
-{% for post in site.posts %}
-* [{{post.title}}]({{ post.url }})
-{% endfor %}
+<ul>
+  {% for post in site.posts %}
+    <a href="{{ post.url }}">{{ post.title }}</a>
+  {% endfor %}
+</ul>
 
 ---
 
