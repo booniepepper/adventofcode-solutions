@@ -1,20 +1,19 @@
-# Advent of Code 2020
+# Advent of Code solutions
 
-I'm doing Advent of Code this year. https://adventofcode.com/2020
+I started solving [Advent of Code](https://adventofcode.com) starting in 2020.
 
 My personal challenge is:
+
 * Use a different language for each day
 * Read the input from a file
 * Print results to stdout
 
-In some languages IO is new to me.
-
-# Spoilers ahead!
+# Spoilers included!
 
 I'm not caring too much about reformatting, "production
 quality," or finding the absolute best performing algorithm in
 these, so take all code, especially its quality, with a grain of
 salt.
 
-[Solutions](https://hiljusti.github.io/adventofcode-solutions/solutions)
+[This site](https://hiljusti.github.io/adventofcode-solutions) is hosted using github pages + jekyll.
 
