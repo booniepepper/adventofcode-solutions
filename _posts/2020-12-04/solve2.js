@@ -17,7 +17,8 @@ const validate = pass => patterns.every(patt => pass.match(patt));
 
 const n = readFileSync("./input", "utf8")
     .replace(/\n/g, " ")
-    .replace(/  /g, "\n").split("\n")
+    .replace(/  /g, "\n")
+    .split("\n")
     .filter(validate)
     .length;
 
