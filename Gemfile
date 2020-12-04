@@ -6,6 +6,6 @@ group :jekyll_plugins do
 end
 
 # Copy source so it's linkable by Jekyll.
-FileUtils.mkdir '_include'
-FileUtils.cp Dir.glob('*/solve*'), '_include'
+FileUtils.mkdir '_includes'
+FileUtils.cp Dir.glob('*/solve*'), '_includes'
 
