@@ -8,7 +8,7 @@ style: dark
 
 title: 'a hiljusti polyglot adventure | Advent of Code 2020 Solutions'
 description: 'a hiljusti polyglot adventure | Advent of Code 2020 Solutions'
-baseurl: '/adventofcode-2020'
+baseurl: '/adventofcode-solutions'
 url: 'https://hiljusti.github.io'
 
 header_pages:
