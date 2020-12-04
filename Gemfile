@@ -1,0 +1,2 @@
+gem "jekyll-shell-theme"
+
