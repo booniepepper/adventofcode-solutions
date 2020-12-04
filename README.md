@@ -11,5 +11,5 @@ Mostly because in some languages, IO is something I haven't done before.
 
 Spoilers ahead!
 
-[Solutions](solutions-index)
+[Solutions](https://hiljusti.github.io/adventofcode-2020/solutions.html)
 
