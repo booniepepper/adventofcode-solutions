@@ -7,9 +7,14 @@ My personal challenge is:
 * Read the input from a file
 * Print results to stdout
 
-Mostly because in some languages, IO is something I haven't done before.
+In some languages IO is new to me.
 
-Spoilers ahead!
+# Spoilers ahead!
+
+I'm not caring too much about reformatting, "production
+quality," or finding the absolute best performing algorithm in
+these, so take all code, especially its quality, with a grain of
+salt.
 
 [Solutions](https://hiljusti.github.io/adventofcode-2020/solutions)
 
