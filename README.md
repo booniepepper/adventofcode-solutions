@@ -7,4 +7,9 @@ My personal challenge is:
 * Read the input from a file
 * Print results to stdout
 
-(Because in some languages, IO is something I haven't done before)
+Mostly because in some languages, IO is something I haven't done before.
+
+Spoilers ahead!
+
+[Solutions](solutions-index)
+
