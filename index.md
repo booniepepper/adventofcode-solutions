@@ -1,3 +1,9 @@
+---
+title: /
+layout: home
+permalink: /
+---
+
 # Advent of Code 2020
 
 I'm doing Advent of Code this year. https://adventofcode.com/2020
