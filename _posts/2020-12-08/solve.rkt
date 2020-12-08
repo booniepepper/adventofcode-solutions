@@ -13,10 +13,9 @@
                [op (first line)]
                [n (second line)])
             (printf "~a: ~a ~a | ~a\n" add op n acc)
-            (case op
-                [("nop") (compute-line (add1 add) acc       code seen)]
-                [("acc") (compute-line (add1 add) (+ acc n) code seen)]
-                [("jmp") (compute-line (+ add n)  acc       code seen)]))))
+            (let ([add (case op [("jmp") (+ add n)] [else (add1 add)])]
+                  [acc (case op [("acc") (+ acc n)] [else acc])])
+                (compute-line add acc code seen)))))
 
 (compute-line 0 0 the-code (set))
 
