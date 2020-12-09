@@ -14,5 +14,7 @@ My personal challenge is:
 
 # Spoilers included!
 
-I'm not caring _too_ much about reformatting, "production quality," or finding the absolute best performing algorithm in these. Take all code, especially its quality, with a grain of salt.
+I'm not caring _too_ much about reformatting, "production quality," or finding the absolute best performing algorithm in these.
+
+Take all code here, especially its quality, with a grain of salt. I'm a beginner in some languages, send me an issue if there's something I could improve.
 
