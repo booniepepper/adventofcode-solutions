@@ -28,7 +28,7 @@
 ; Part 1, expected to error out.
 (compute-line 0 0 the-code (set))
 
-(print "Type something to continue.")
+(print "Type something to continue: ")
 (read)
 
 ; Part 2, searching for a non-error case 
