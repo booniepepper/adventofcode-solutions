@@ -3,7 +3,8 @@
 
 (define the-code
     (make-immutable-hash (sequence->list (sequence-map (lambda (e i) (list i (first e) (string->number (second e))))
-        (in-indexed (filter-map (lambda (s) (and (non-empty-string? s) (string-split s " ")))                                                   (file->lines "input")))))))
+        (in-indexed (filter-map (lambda (s) (and (non-empty-string? s) (string-split s " ")))
+            (file->lines "input")))))))
 
 (define (compute-line addr acc code seen)
     (cond
