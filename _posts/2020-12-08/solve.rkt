@@ -1,8 +1,10 @@
 #!/usr/bin/env racket
 #lang racket
 
-(define (extract-line line) (and (non-empty-string? line) (string-split line " ")))
-(define (format-line entry index) (list index (first entry) (string->number (second entry))))
+(define (extract-line line)
+    (and (non-empty-string? line) (string-split line " ")))
+(define (format-line entry index)
+    (list index (first entry) (string->number (second entry))))
 (define the-code
     (make-immutable-hash (sequence->list (sequence-map format-line
         (in-indexed (filter-map extract-line
@@ -36,12 +38,17 @@
 (define swap (hash "jmp" "nop" "nop" "jmp"))
 (define swapped-codes
     (filter-map
-        (lambda (line) (let ([add (first line)] [op (second line)] [n (third line)])
-            (and (hash-has-key? swap op)
-                 (hash-set the-code add (list (hash-ref swap op) n)))))
+        (lambda (line)
+            (let ([add (first line)]
+                  [op (second line)]
+                  [n (third line)])
+                (and (hash-has-key? swap op)
+                     (hash-set the-code add (list (hash-ref swap op) n)))))
         (hash->list the-code)))
 
+(define (run-variant swapped-code)
+    (compute-line 0 0 swapped-code (set)))
 (and
-    (findf (lambda (swapped-code) (compute-line 0 0 swapped-code (set))) swapped-codes)
+    (findf run-variant swapped-codes)
     (printf "Done.\n"))
 
