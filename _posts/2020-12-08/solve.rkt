@@ -1,15 +1,18 @@
 #!/usr/bin/env racket
 #lang racket
 
+(define (extract-line line) (and (non-empty-string? line) (string-split line " ")))
+(define (format-line entry index) (list index (first entry) (string->number (second entry))))
 (define the-code
-    (make-immutable-hash (sequence->list (sequence-map (lambda (e i) (list i (first e) (string->number (second e))))
-        (in-indexed (filter-map (lambda (s) (and (non-empty-string? s) (string-split s " ")))
+    (make-immutable-hash (sequence->list (sequence-map format-line
+        (in-indexed (filter-map extract-line
             (file->lines "input")))))))
 
 (define (compute-line addr acc code seen)
     (cond
         [(set-member? seen addr)
-            (eprintf "Error: Attempted to traverse to already seen address\naddr: ~a\nacc: ~a\n\n" addr acc)
+            (eprintf "Error: Attempted to traverse to already seen address.\n")
+            (eprintf "addr: ~a\nacc: ~a\n\n" addr acc)
             #f]
         [(hash-has-key? code addr)
             (let* ([seen (set-add seen addr)]
@@ -33,11 +36,12 @@
 (define swap (hash "jmp" "nop" "nop" "jmp"))
 (define swapped-codes
     (filter-map
-        (lambda (line)
-            (let ([add (first line)] [op (second line)] [n (third line)])
-                (and (hash-has-key? swap op) (hash-set the-code add (list (hash-ref swap op) n)))))
+        (lambda (line) (let ([add (first line)] [op (second line)] [n (third line)])
+            (and (hash-has-key? swap op)
+                 (hash-set the-code add (list (hash-ref swap op) n)))))
         (hash->list the-code)))
 
-(and (findf (lambda (swapped-code) (compute-line 0 0 swapped-code (set))) swapped-codes)
-     (printf "Done.\n"))
+(and
+    (findf (lambda (swapped-code) (compute-line 0 0 swapped-code (set))) swapped-codes)
+    (printf "Done.\n"))
 
