@@ -15,7 +15,7 @@ for my $line (@lines) {
     $prev = $line;
 }
 
-# Solution to part 1:
+# Part 1 solution
 print "Differences of ones ($diffs[1]) ";
 print "* those of threes ($diffs[3]) ";
 print '= ', $diffs[1] * $diffs[3], "\n";
@@ -35,6 +35,7 @@ for my $n (3..scalar(@lines-1)) {
     $routes[$n] = $routes_here;
 }
 
+# Part 2 solution
 print "Total number of distinct arrangements: ", pop(@routes), "\n";
 
 1;
