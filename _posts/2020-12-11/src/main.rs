@@ -14,13 +14,12 @@ type SparseMatrix<A> = Vec<Vec<Option<A>>>;
 
 fn main() {
     let input = load_input();
-    //println!("{:?}", fix(change_seats, input));
     let solution_one = fix(change_seats, input)
         .into_iter()
         .flatten()
         .filter_map(|seat| match seat {
             Some(Full) => Some(Full),
-            _ => None
+            _ => None,
         })
         .count();
     println!("Found {} full seats when it settled.", solution_one);
@@ -38,36 +37,45 @@ fn fix<A: PartialEq + Clone>(f: impl Fn(&A) -> A, initial: A) -> A {
     curr.deref().clone()
 }
 
-fn change_seats(seats: &SparseMatrix<Seat>) -> SparseMatrix<Seat> {
-    seats
+fn deep_enum_map<A, F>(matrix: &SparseMatrix<A>, transform: F) -> SparseMatrix<A>
+where
+    F: Fn(&A, (usize, usize)) -> A,
+{
+    matrix
         .iter()
         .enumerate()
         .map(|(i, row)| {
             row.iter()
                 .enumerate()
-                .map(|(j, cell)| {
-                    let lazy_neighbors = || neighbors(seats, i, j);
-                    match cell {
-                        None => None,
-                        Some(Empty) => {
-                            if lazy_neighbors().into_iter().all(|n| n == Empty) {
-                                Some(Full)
-                            } else {
-                                *cell
-                            }
-                        }
-                        Some(Full) => {
-                            if lazy_neighbors().into_iter().filter(|n| *n == Full).count() >= 4 {
-                                Some(Empty)
-                            } else {
-                                *cell
-                            }
-                        }
-                    }
+                .map(|(j, cell)| match cell {
+                    None => None,
+                    Some(value) => Some(transform(value, (i, j))),
                 })
                 .collect()
         })
         .collect()
+}
+
+fn change_seats(seats: &SparseMatrix<Seat>) -> SparseMatrix<Seat> {
+    deep_enum_map(seats, |cell, (i, j)| {
+        let ns = neighbors(seats, i, j);
+        match cell {
+            Empty => {
+                if ns.into_iter().all(|n| n == Empty) {
+                    Full
+                } else {
+                    *cell
+                }
+            }
+            Full => {
+                if ns.into_iter().filter(|n| *n == Full).count() >= 4 {
+                    Empty
+                } else {
+                    *cell
+                }
+            }
+        }
+    })
 }
 
 fn neighbors(seats: &SparseMatrix<Seat>, row: usize, col: usize) -> Vec<Seat> {
