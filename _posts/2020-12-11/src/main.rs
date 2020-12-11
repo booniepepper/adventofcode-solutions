@@ -14,7 +14,7 @@ type SparseMatrix<A> = Vec<Vec<Option<A>>>;
 
 fn main() {
     let input = load_input();
-    let solution_one = fix(change_seats, input)
+    let solution_one = fix(change_seats_v1, input)
         .into_iter()
         .flatten()
         .filter_map(|seat| match seat {
@@ -25,38 +25,7 @@ fn main() {
     println!("Found {} full seats when it settled.", solution_one);
 }
 
-// https://en.wikipedia.org/wiki/Fixed-point_combinator
-// More accessible in SICP: https://mitpress.mit.edu/sites/default/files/sicp/index.html
-fn fix<A: PartialEq + Clone>(f: impl Fn(&A) -> A, initial: A) -> A {
-    let mut prev = Box::new(initial.clone());
-    let mut curr = Box::new(f(&initial));
-    while curr != prev {
-        prev = curr;
-        curr = Box::new(f(&prev));
-    }
-    curr.deref().clone()
-}
-
-fn deep_enum_map<A, F>(matrix: &SparseMatrix<A>, transform: F) -> SparseMatrix<A>
-where
-    F: Fn(&A, (usize, usize)) -> A,
-{
-    matrix
-        .iter()
-        .enumerate()
-        .map(|(i, row)| {
-            row.iter()
-                .enumerate()
-                .map(|(j, cell)| match cell {
-                    None => None,
-                    Some(value) => Some(transform(value, (i, j))),
-                })
-                .collect()
-        })
-        .collect()
-}
-
-fn change_seats(seats: &SparseMatrix<Seat>) -> SparseMatrix<Seat> {
+fn change_seats_v1(seats: &SparseMatrix<Seat>) -> SparseMatrix<Seat> {
     deep_enum_map(seats, |cell, (i, j)| {
         let ns = neighbors(seats, i, j);
         match cell {
@@ -98,6 +67,38 @@ fn neighbors(seats: &SparseMatrix<Seat>, row: usize, col: usize) -> Vec<Seat> {
     .filter(|(row, col)| 0 <= *row && *row < r_bound && 0 <= *col && *col < c_bound)
     .filter_map(|(row, col)| seats[row as usize][col as usize])
     .collect()
+}
+
+
+// https://en.wikipedia.org/wiki/Fixed-point_combinator
+// More accessible in SICP: https://mitpress.mit.edu/sites/default/files/sicp/index.html
+fn fix<A: PartialEq + Clone>(f: impl Fn(&A) -> A, initial: A) -> A {
+    let mut prev = Box::new(initial.clone());
+    let mut curr = Box::new(f(&initial));
+    while curr != prev {
+        prev = curr;
+        curr = Box::new(f(&prev));
+    }
+    curr.deref().clone()
+}
+
+fn deep_enum_map<A, F>(matrix: &SparseMatrix<A>, transform: F) -> SparseMatrix<A>
+where
+    F: Fn(&A, (usize, usize)) -> A,
+{
+    matrix
+        .iter()
+        .enumerate()
+        .map(|(i, row)| {
+            row.iter()
+                .enumerate()
+                .map(|(j, cell)| match cell {
+                    None => None,
+                    Some(value) => Some(transform(value, (i, j))),
+                })
+                .collect()
+        })
+        .collect()
 }
 
 fn load_input() -> SparseMatrix<Seat> {
