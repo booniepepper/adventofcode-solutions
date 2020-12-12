@@ -12,6 +12,7 @@ use Seat::*;
 
 type SparseMatrix<A> = Vec<Vec<Option<A>>>;
 
+// Note: This is particularly messy, I should come back when I've got time.
 fn main() {
     let input = load_input();
     println!(
