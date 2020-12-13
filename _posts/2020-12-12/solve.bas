@@ -8,10 +8,10 @@ sub rotate$(dir$, degrees)
 
     while (times > 0)
         switch dir$
-            case "N": dir$ = "E" : break
-            case "E": dir$ = "S" : break
-            case "S": dir$ = "W" : break
-            case "W": dir$ = "N" : break
+            case "N": dir$ = "W" : break
+            case "W": dir$ = "S" : break
+            case "S": dir$ = "E" : break
+            case "E": dir$ = "N" : break
         end switch
         times = times - 1
     end while
@@ -34,8 +34,8 @@ sub solve()
         amount = val(mid$(command$,2))
 
         switch op$
-            case "R": facing$ = rotate$(facing$, amount) : continue
-            case "L": facing$ = rotate$(facing$, -amount) : continue
+            case "R": facing$ = rotate$(facing$, -amount) : continue
+            case "L": facing$ = rotate$(facing$, amount) : continue
         end switch
 
         move_dir$=facing$
