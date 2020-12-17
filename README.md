@@ -4,7 +4,7 @@ _The challenges are at [https://adventofcode.com](https://adventofcode.com)_
 
 # Advent of Code solutions
 
-I started solving  starting in 2020.
+I started solving starting in 2020.
 
 My personal challenge is:
 
@@ -14,7 +14,5 @@ My personal challenge is:
 
 # Spoilers included!
 
-I'm not caring _too_ much about reformatting, "production quality," or finding the absolute best performing algorithm in these.
-
-Take all code here, especially its quality, with a grain of salt. I'm a beginner in some languages, send me an issue if there's something I could improve.
+Mind your step, it's a bit messy around here...
 
