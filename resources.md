@@ -14,4 +14,5 @@ title: /resources
 * [https://www.programming-idioms.org](https://www.programming-idioms.org)
 * [https://hyperpolyglot.org](https://hyperpolyglot.org)
 * [https://godbolt.org](https://godbolt.org)
+* [https://wiki.c2.com](https://wiki.c2.com)
 
