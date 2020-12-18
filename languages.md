@@ -1,0 +1,57 @@
+Languages I will probably use:
+
+- Awk
+- Elixir
+- Go
+- Hack
+- Julia
+- Nim
+- Prolog
+- Raku
+- Zig
+
+List of languages I haven't used yet:
+
+- Ada
+- Alice
+- Assembly (NASM?)
+- Awk
+- Chapel
+- Clojure (via joker?)
+- COBOL
+- Crystal
+- D
+- Dart
+- Delphi/Object Pascal
+- Elixir
+- Elm
+- Fortran
+- Go
+- Groovy
+- Hack
+- Icon (?)
+- Ioke
+- J (?)
+- Julia
+- Kotlin (Too similar to Java & JavaScript?)
+- Logo
+- Maple
+- Mercury
+- ML (Standard ML? OCaml? Reason?)
+- Nadeshiko (なでしこ) https://nadesi.com
+- Nim
+- Objective C
+- PHP
+- Powershell
+- Produire (プロデル) https://rdr.utopiat.net
+- Prolog (SWI? YAP?)
+- R
+- Raku
+- Ring (?)
+- Scala
+- Scratch
+- Smalltalk
+- Swift (can this be done on *nix?)
+- Tcl
+- TTSneo http://tts.utopiat.net
+- Zig
