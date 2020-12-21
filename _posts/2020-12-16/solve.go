@@ -47,16 +47,22 @@ func sum(ns []int) int {
 func findInvalidFields(headers []Header, tickets [][]int) []int {
     invalids := make([]int, 0)
     for _, ticket := range tickets {
-        for _, num := range ticket {
-            valid := false
-            for _, header := range headers {
-                for _, interval := range header.Intervals {
-                    valid = valid || interval.Contains(num)
-                }
+       invalids = append(invalids, findInvalidField(headers, ticket)...)
+    }
+    return invalids
+}
+
+func findInvalidField(headers []Header, ticket []int) []int {
+    invalids := make([]int, 0)
+    for _, num := range ticket {
+        valid := false
+        for _, header := range headers {
+            for _, interval := range header.Intervals {
+                valid = valid || interval.Contains(num)
             }
-            if !valid {
-                invalids = append(invalids, num)
-            }
+        }
+        if !valid {
+            invalids = append(invalids, num)
         }
     }
     return invalids
