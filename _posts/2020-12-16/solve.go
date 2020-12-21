@@ -39,9 +39,10 @@ func main() {
         validTickets := removeInvalids(headers, tickets)
         orderedHeaders := orderHeaders(headers, validTickets)
         departureFields := getDepartureFields(orderedHeaders)
+        solution2 = product(selectByIndices(myTicket, departureFields))
 
         // Part 2 solution
-        fmt.Println("Product of departure fields in my ticket:", product(selectByIndices(myTicket, departureFields)))
+        fmt.Println("Product of departure fields in my ticket:", solution2)
 }
 
 func getDepartureFields(headers []Header) []int {
@@ -120,9 +121,9 @@ func findInvalidFields(headers []Header, tickets [][]int) []int {
 
 // Wow, I finally get the hubbub about why people want generics in Go.
 // No wonder the std library feels lower level rather than higher level.
-// (That is, they can't implement a generic filter, map, reduce etc. without ugly reflection hijinks)
+// (They can't implement a generic filter, map, reduce etc. without ugly reflection hijinks)
 // https://blog.golang.org/generics-next-step
-// Whoa, Phil Wadler is on the case (Haskell monads and Java 5 Generics among other accomplishments)
+// Whoa, Phil Wadler is on the case! (Haskell monads and Java 5 Generics and more)
 func removeInvalids(headers []Header, tickets [][]int) [][]int {
     valids := make([][]int, 0)
     for _, ticket := range tickets {
