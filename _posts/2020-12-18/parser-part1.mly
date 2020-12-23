@@ -2,8 +2,7 @@
 %token PLUS TIMES
 %token LPAREN RPAREN
 %token EOL
-%left TIMES
-%left PLUS
+%left PLUS TIMES
 %start main
 %type <int> main
 %%
