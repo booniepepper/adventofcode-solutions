@@ -1,16 +1,6 @@
 (*
 Lifted almost entirely from this example:
 https://www.ocaml.org/releases/4.11/htmlman/lexyacc.html#s%3Alexyacc-example
-
-ocamllex lexer.mll \
-&& ocamlyacc parser.mly \
-&& ocamlc -c parser.mli \
-&& ocamlc -c lexer.ml \
-&& ocamlc -c parser.ml \
-&& ocamlc -c solve.ml \
-&& ocamlc lexer.cmo parser.cmo solve.cmo -o solve \
-&& ./solve
-
 *)
 
 open Printf;;
