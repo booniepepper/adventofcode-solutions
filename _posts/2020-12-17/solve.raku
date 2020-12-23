@@ -92,15 +92,15 @@ sub minmax_as_range(%minmax) {
     return (%minmax{'min'} - 1)..(%minmax{'max'}+1);
 }
 
-constant $delim = ',';
+constant COORD_DELIM = ',';
 
 sub from_coord_key($xyz) {
-    my ($x, $y, $z) = $xyz.split($delim);
+    my ($x, $y, $z) = $xyz.split(COORD_DELIM);
     return {x => $x, y => $y, z => $z};
 }
 
 sub to_coord_key($x, $y, $z) {
-    return join($delim, $x, $y, $z);
+    return join(COORD_DELIM, $x, $y, $z);
 }
 
 sub load_coords {
