@@ -1,5 +1,6 @@
-*.cmo
+parser.*
+lexer.*
 *.cmi
-*.mli
+*.cmo
 solve
 
