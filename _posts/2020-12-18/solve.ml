@@ -1,8 +1,3 @@
-(*
-Lifted almost entirely from this example:
-https://www.ocaml.org/releases/4.11/htmlman/lexyacc.html#s%3Alexyacc-example
-*)
-
 open Printf;;
 
 let lexed_file f =
