@@ -1,12 +1,12 @@
-_This site is hosted at [https://hiljusti.github.io/adventofcode-solutions](https://hiljusti.github.io/adventofcode-solutions) and the source is at [https://github.com/hiljusti/adventofcode-solutions](https://github.com/hiljusti/adventofcode-solutions)_
-
-_The challenges are at [https://adventofcode.com](https://adventofcode.com)_
+* [the challenges](https://adventofcode.com)
+* [this site](https://hiljusti.github.io/adventofcode-solutions)
+* [source code](https://github.com/hiljusti/adventofcode-solutions/_posts)
 
 # Advent of Code solutions
 
-I started solving starting in 2020.
+I started solving in 2020.
 
-My personal challenge is:
+My personal challenge here is:
 
 * Use a different programming language for each day
 * Read the input from a file
