@@ -2,8 +2,8 @@
 %token PLUS TIMES
 %token LPAREN RPAREN
 %token EOL
-%left TIMES
-%left PLUS
+%left TIMES /* Only these    */
+%left PLUS  /* lines change. */
 %start main
 %type <int> main
 %%
