@@ -9,10 +9,11 @@ Languages I will probably use:
 - Prolog (SWI? YAP?)
 - Zig
 
-List of languages I haven't used yet:
+List of languages (or language-like things) I haven't used yet:
 
 - Ada
 - Alice
+- ANTLR
 - Assembly (NASM?)
 - Chapel
 - Clojure (via joker?)
