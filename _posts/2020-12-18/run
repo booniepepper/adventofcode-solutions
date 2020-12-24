@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Update based on part to solve:
+#ln -sf parser-part1.mly parser.mly
+ln -sf parser-part2.mly parser.mly
+
+ocamllex lexer.mll \
+  && ocamlyacc parser.mly \
+  && ocamlc -c parser.mli \
+  && ocamlc -c lexer.ml \
+  && ocamlc -c parser.ml \
+  && ocamlc -c solve.ml \
+  && ocamlc lexer.cmo parser.cmo solve.cmo -o solve \
+  && ./solve
+
