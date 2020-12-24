@@ -1,7 +1,6 @@
 // Run with `cargo run`
 use std::convert::TryInto;
 use std::fs;
-use std::ops::Deref;
 
 #[derive(PartialEq, Eq, Clone, Copy, Debug)]
 enum Seat {
@@ -149,13 +148,13 @@ fn line_of_sight(
 // https://en.wikipedia.org/wiki/Fixed-point_combinator
 // More accessible in SICP: https://mitpress.mit.edu/sites/default/files/sicp/index.html
 fn fix<A: PartialEq + Clone>(f: impl Fn(&A) -> A, initial: &A) -> A {
-    let mut prev = Box::new(initial.clone());
-    let mut curr = Box::new(f(&initial));
+    let mut prev = initial.clone();
+    let mut curr = f(&initial);
     while curr != prev {
         prev = curr;
-        curr = Box::new(f(&prev));
+        curr = f(&prev);
     }
-    curr.deref().clone()
+    curr.clone()
 }
 
 fn deep_enum_map<A, F>(matrix: &SparseMatrix<A>, transform: F) -> SparseMatrix<A>
@@ -192,6 +191,7 @@ fn load_input() -> SparseMatrix<Seat> {
         .collect::<Vec<_>>()
 }
 
+#[allow(dead_code)]
 fn debug_view_of_seats(seats: &SparseMatrix<Seat>) -> String {
     seats
         .iter()
