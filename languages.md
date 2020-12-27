@@ -24,7 +24,6 @@ List of languages (or language-like things) I haven't used yet:
 - Delphi/Object Pascal
 - Elm
 - Fortran
-- Go
 - Groovy
 - Icon (?)
 - Ioke
