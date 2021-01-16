@@ -1,5 +1,5 @@
 ---
-title: adventofcode-solutions
+title: /adventofcode-solutions
 layout: home
 permalink: /adventofcode-solutions
 ---

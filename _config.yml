@@ -1,3 +1,6 @@
+plugins:
+  - jekyll-redirect-from
+
 safe: false
 
 highlighter: rouge
@@ -12,6 +15,7 @@ baseurl: '/adventofcode-solutions'
 url: 'https://hiljusti.github.io'
 
 header_pages:
+  - so-dang-cool.md
   - index.md
   - resources.md
 
