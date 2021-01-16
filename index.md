@@ -10,7 +10,9 @@ permalink: /adventofcode-solutions
 
 # Solutions
 
+<ul>
 {% for post in site.categories['adventofcode-solutions'] %}
-* [{{ post.title }}]({{ post.url}})
+    <li><a href="{{ post.url }}">{{ post.title}}</a></li>
 {% endfor %}
+</ul>
 
