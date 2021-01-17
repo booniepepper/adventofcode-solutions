@@ -10,13 +10,3 @@ permalink: /adventofcode-solutions
 
 # Solutions
 
-Categories:
-{% for category in site.categories %}
-- {{ category }}
-{% endfor %}
-
-adventofcode-solutions
-{% for post in site.categories['adventofcode-solutions'] %}
-- {{ post.url }}
-{% endfor %}
-

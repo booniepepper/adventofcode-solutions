@@ -12,7 +12,3 @@ My personal challenge here is:
 * Read the input from a file
 * Print results to stdout
 
-# Spoilers included!
-
-Mind your step, it's a bit messy around here...
-
