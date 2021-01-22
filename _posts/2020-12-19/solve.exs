@@ -14,12 +14,11 @@ defmodule Solve do
   def tree_search(_, false), do: false
   def tree_search(_, ""), do: false
   def tree_search(target, target), do: true
+  def tree_search({_, [rule]}, target), do: tree_search(rule, target)
 
   def tree_search(prefix, target) when is_bitstring(prefix) do
     String.starts_with?(target, prefix) && String.replace_prefix(target, prefix, "")
   end
-
-  def tree_search({_, [rule]}, target), do: tree_search(rule, target)
 
   def tree_search({:or, [rule | rules]}, target) do
     tree_search(rule, target) || tree_search({:or, rules}, target)
@@ -71,12 +70,20 @@ end
 
 {:ok, input} = File.read("./input")
 
-[raw_rules, targets | _] =
+[rule_text, targets | _] =
   input
   |> String.split("\n\n")
   |> Enum.map(&String.split(&1, "\n"))
 
-rulebook = Solve.parse_rules(raw_rules)
+rulebook = Solve.parse_rules(rule_text)
 
 IO.write(Solve.count_for_zero(rulebook, targets))
-IO.puts(" messages match the 0 rule.")
+IO.puts(" messages are valid.")
+
+_forbidden_arts = %{
+  "8" => {:slurp, ["42", :self]},
+  "11" => {:slurp, ["42", :self, "31"]}
+}
+
+#IO.write(Solve.count_for_zero(Map.merge(rulebook, forbidden_arts), targets))
+#IO.puts(" messages are valid (with danger).")
