@@ -1,16 +1,8 @@
 #! /usr/bin/env elixir
 
-{:ok, input} = File.read("./input")
-
-[raw_rules, targets | _] =
-  input
-  |> String.split("\n\n")
-  |> Enum.map(&String.split(&1, "\n"))
-
 defmodule Solve do
-  def count_for_zero(raw_rules, targets) do
-    rules = parse_rules(raw_rules)
-    rule_tree = treeify_and_shake(rules, "0")
+  def count_for_zero(rulebook, targets) do
+    rule_tree = treeify({:start, "0"}, rulebook)
     Enum.count(targets, &tree_contains?(rule_tree, &1))
   end
 
@@ -37,29 +29,7 @@ defmodule Solve do
     tree_search({:and, rules}, tree_search(rule, target))
   end
 
-  def treeify_and_shake(rules, starting_key) do
-    {:or, [{:and, [starting_key]}]}
-    |> treeify(rules)
-    |> shake_tree
-  end
-
-  def shake_tree(leaf) when is_bitstring(leaf), do: leaf
-  def shake_tree(leaf) when is_bitstring(leaf), do: leaf
-  def shake_tree({:and, leaf}) when is_bitstring(leaf), do: leaf
-  def shake_tree({:or, leaf}) when is_bitstring(leaf), do: leaf
-  def shake_tree({:and, [branch]}), do: shake_tree(branch)
-  def shake_tree({:or, [branch]}), do: shake_tree(branch)
-
-  def shake_tree({:and, branches}) do
-    if Enum.all?(branches, &is_bitstring(&1)) do
-      Enum.join(branches)
-    else
-      {:and, Enum.map(branches, &shake_tree(&1))}
-    end
-  end
-
-  def shake_tree({:or, branches}), do: {:or, Enum.map(branches, &shake_tree(&1))}
-
+  def treeify({:start, value}, rules), do: treeify(Map.get(rules, value), rules)
   def treeify(leaf, _) when is_bitstring(leaf), do: leaf
 
   def treeify({:or, ors}, rules) do
@@ -99,5 +69,14 @@ defmodule Solve do
   end
 end
 
-IO.write(Solve.count_for_zero(raw_rules, targets))
+{:ok, input} = File.read("./input")
+
+[raw_rules, targets | _] =
+  input
+  |> String.split("\n\n")
+  |> Enum.map(&String.split(&1, "\n"))
+
+rulebook = Solve.parse_rules(raw_rules)
+
+IO.write(Solve.count_for_zero(rulebook, targets))
 IO.puts(" messages match the 0 rule.")
