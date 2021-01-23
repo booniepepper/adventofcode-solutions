@@ -1,6 +1,11 @@
 #! /usr/bin/env elixir
 
-# This is the messiest solution ever. Prime for a rewrite, and i will likely learn some more about Elixir code organization along the way. (Abandon resolving a tree. Don't hardcode the slurp logic. I should be generating possibile rules)
+# This is the messiest solution yet. I struggled with this one,
+# partially due to a 1 month time gap (personal things) between
+# part 1 and 2, and partially just exhausted and want to finish
+# the project more than I want to have each solution be excellent.
+#
+# tl;dr: Elixir is a better language than my code here suggests.
 
 defmodule Solve do
   def count_for_zero(rulebook, targets) do
