@@ -1,7 +1,7 @@
 ---
 title: /adventofcode-solutions
 layout: home
-permalink: /adventofcode-solutions
+permalink: /
 ---
 
 {% include_relative README.md %}
