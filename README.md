@@ -1,5 +1,5 @@
 * [the challenges](https://adventofcode.com)
-* [this site](https://hiljusti.github.io/adventofcode-solutions)
+* [this site](https://hiljusti.github.io/adventofcode-solutions/)
 * [source code](https://github.com/hiljusti/adventofcode-solutions/tree/main/_posts)
 
 # Advent of Code solutions
