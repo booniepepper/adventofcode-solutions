@@ -1,7 +1,6 @@
 Languages I will probably use:
 
 - Awk
-- Elixir
 - Hack
 - Julia
 - Nim
