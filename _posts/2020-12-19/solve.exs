@@ -1,5 +1,7 @@
 #! /usr/bin/env elixir
 
+# This is the messiest solution ever. Prime for a rewrite, and i will likely learn some more about Elixir code organization along the way. (Abandon resolving a tree. Don't hardcode the slurp logic. I should be generating possibile rules)
+
 defmodule Solve do
   def count_for_zero(rulebook, targets) do
     rule_tree = treeify({:start, "0"}, rulebook)
@@ -8,10 +10,12 @@ defmodule Solve do
 
   def tree_contains?(rules, target) do
     # tree_search could return a suffix, so explicitly require true
-    true == tree_search(rules, target)
+    result = tree_search(rules, target)
+    true == result
   end
 
   def tree_search(_, false), do: false
+  def tree_search(_, true), do: false
   def tree_search(_, ""), do: false
   def tree_search(target, target), do: true
   def tree_search({_, [rule]}, target), do: tree_search(rule, target)
@@ -28,8 +32,28 @@ defmodule Solve do
     tree_search({:and, rules}, tree_search(rule, target))
   end
 
+  def tree_search({:slurp, [left, :self, right]}, target) do
+    1..String.length(target)
+    |> Enum.scan({0, target}, fn _, {n, acc} ->
+      {n + 1, tree_search(left, acc)}
+    end)
+    |> Enum.filter(fn {_, acc} -> !is_boolean(acc) end)
+    |> Enum.map(fn {n_left, target_rem} ->
+      1..n_left
+      |> Enum.scan({0, target_rem}, fn _, {n, acc} ->
+        {n + 1, tree_search(right, acc)}
+      end)
+      |> Enum.any?(fn {_, acc} -> true == acc end)
+    end)
+    |> Enum.any?(fn b -> b end)
+  end
+
   def treeify({:start, value}, rules), do: treeify(Map.get(rules, value), rules)
   def treeify(leaf, _) when is_bitstring(leaf), do: leaf
+
+  def treeify({:slurp, [a, :self, b]}, rules) do
+    {:slurp, [treeify(Map.get(rules, a), rules), :self, treeify(Map.get(rules, b), rules)]}
+  end
 
   def treeify({:or, ors}, rules) do
     {
@@ -80,10 +104,9 @@ rulebook = Solve.parse_rules(rule_text)
 IO.write(Solve.count_for_zero(rulebook, targets))
 IO.puts(" messages are valid.")
 
-_forbidden_arts = %{
-  "8" => {:slurp, ["42", :self]},
-  "11" => {:slurp, ["42", :self, "31"]}
+forbidden_arts = %{
+  "0" => {:slurp, ["42", :self, "31"]}
 }
 
-#IO.write(Solve.count_for_zero(Map.merge(rulebook, forbidden_arts), targets))
-#IO.puts(" messages are valid (with danger).")
+IO.write(Solve.count_for_zero(Map.merge(rulebook, forbidden_arts), targets))
+IO.puts(" messages are valid (with danger).")
