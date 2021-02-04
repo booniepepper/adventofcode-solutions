@@ -31,7 +31,7 @@ List of languages (or language-like things) I haven't used yet:
 - Logo
 - Maple
 - Mercury
-- ML (Standard ML? OCaml? Reason?)
+- ML (Standard ML? OCaml? Reason? Poly (SML)?)
 - Nadeshiko (なでしこ) https://nadesi.com
 - Objective C
 - PHP
