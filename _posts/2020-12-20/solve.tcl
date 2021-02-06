@@ -1,27 +1,12 @@
 #! /usr/bin/env tclsh
 
-proc get_lines {filename} {
+proc get_tiles {filename} {
     set handle [open $filename r]
     set contents [read $handle]
     close $handle
-    set lines [split $contents "\n"]
-    return $lines
-}
-
-proc get_tiles {} {
-    set lines [get_lines input]
-    set tiles []
-    set tile ""
-    foreach line $lines {
-        if {$line == ""} {
-          lappend $tiles [$tile]
-          set tile ""
-        } else {
-          lappend $tile $line
-        }
-    }
+    set tiles [split $contents "\n\n"]
     return $tiles
 }
 
-puts [get_tiles]
+puts [lindex [get_tiles input] 0]
 
