@@ -3,32 +3,32 @@
 # TODO: Move this to Rail stdlib or builtins
 [[ns]-> ns [[+] doin] ns length 1 - times last] [sum] def
 
-[[select-scores outcome-scores]->
+[[choice-scores round-scores]->
     the-lines [[line]->
-        select-scores line chars last extract [select]->
-        outcome-scores line extract [outcome]->
-        select outcome +
+        choice-scores line chars last extract [choice]->
+        round-scores line extract [round]->
+        choice round +
     ] map sum
 ] [score-up] def
 
 # Part 1
 
-stab [["X" 1] ["Y" 2] ["Z" 3]] [insert] each [select-1]->
+stab [["X" 1] ["Y" 2] ["Z" 3]] [insert] each [my-rps]->
 stab [
     ["A X" 3] ["A Y" 6] ["A Z" 0]
     ["B X" 0] ["B Y" 3] ["B Z" 6]
     ["C X" 6] ["C Y" 0] ["C Z" 3]
-] [insert] each [outcome-1]->
+] [insert] each [game-outcome]->
 
-select-1 outcome-1 score-up println
+my-rps game-outcome score-up println
 
 # Part 2
 
-stab [["X" 0] ["Y" 3] ["Z" 6]] [insert] each [select-2]->
+stab [["X" 0] ["Y" 3] ["Z" 6]] [insert] each [my-outcome]->
 stab [
     ["A X" 3] ["A Y" 1] ["A Z" 2]
     ["B X" 1] ["B Y" 2] ["B Z" 3]
     ["C X" 2] ["C Y" 3] ["C Z" 1]
-] [insert] each [outcome-2]->
+] [insert] each [game-rps]->
 
-select-2 outcome-2 score-up println
+my-outcome game-rps score-up println
