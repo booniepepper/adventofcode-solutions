@@ -1,0 +1,20 @@
+"input" readf trim lines [the-lines]->
+
+stab [["X" 1] ["Y" 2] ["Z" 3]] [insert] each [select-scores]->
+stab [
+    ["A X" 3] ["A Y" 6] ["A Z" 0]
+    ["B X" 0] ["B Y" 3] ["B Z" 6]
+    ["C X" 6] ["C Y" 0] ["C Z" 3]
+] [insert] each [outcome-scores]->
+
+the-lines [[line]->
+    outcome-scores line extract [outcome]->
+    select-scores line chars last extract [select]->
+
+    outcome select +
+] map [the-scores]->
+
+the-scores length [n-scores]->
+
+# TODO: Rail needs sum/fold/reduce/fix or something!
+the-scores [[+] doin] n-scores 1 - times pls
