@@ -1,6 +1,6 @@
 ---
 layout: post
-title: common-lisp 
+title: common lisp 
 ---
 
 language: [common lisp](http://www.lispworks.com/documentation/HyperSpec/Front/index.htm) ([sbcl](http://www.sbcl.org))
