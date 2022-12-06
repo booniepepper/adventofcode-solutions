@@ -7,6 +7,15 @@ const Range = struct {
     fn contains(self: *Range, range: Range) bool {
         return self.from <= range.from and range.to <= self.to;
     }
+    fn overlaps(self: *Range, range: Range) bool {
+        // There's probably a simpler way...
+        return (self.from <= range.from and range.from <= self.to)
+            or (self.from <= range.to and range.to <= self.to)
+            or (range.from <= self.from and self.from <= range.to)
+            or (range.from <= self.to and self.to <= range.to)
+            or self.contains(range)
+            or (range.from <= self.from and self.to <= range.to);
+    }
 };
 
 pub fn main() anyerror!void {
@@ -15,6 +24,7 @@ pub fn main() anyerror!void {
     var lines = std.mem.split(u8, trimmedInput, "\n");
 
     var contained: u64 = 0;
+    var overlapped: u64 = 0;
 
     while (lines.next()) |line| {
         var ranges = std.mem.split(u8, line, ",");
@@ -25,9 +35,14 @@ pub fn main() anyerror!void {
         if (range1.contains(range2) or range2.contains(range1)) {
             contained += 1;
         }
+
+        if (range1.overlaps(range2)) {
+            overlapped += 1;
+        }
     }
 
     try stdout.print("{}\n", .{contained});
+    try stdout.print("{}\n", .{overlapped});
 }
 
 fn parseRange(str: []const u8) !Range {
