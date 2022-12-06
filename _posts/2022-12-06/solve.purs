@@ -13,15 +13,17 @@ import Node.FS.Sync (readTextFile)
 main :: Effect Unit
 main = do
     text <- readTextFile UTF8 "input"
-    first4uniq 0 >>> fst >>> (\n -> n + 4) >>> show >>> log $ text
+    solve 4 text
+    solve 14 text
+    where
+        solve k = firstKuniq k 0 >>> fst >>> (\n -> n + k) >>> show >>> log
 
-
-first4uniq :: Int -> String -> Tuple Int String
-first4uniq n s =
-    let first4 = take 4 s in
-    if allUniq first4
-        then Tuple n first4
-        else first4uniq (n + 1) (drop 1 s)
+firstKuniq :: Int -> Int -> String -> Tuple Int String
+firstKuniq k n s =
+    let firstK = take k s in
+    if allUniq firstK
+        then Tuple n firstK
+        else firstKuniq k (n + 1) (drop 1 s)
 
 allUniq :: String -> Boolean
 allUniq s
