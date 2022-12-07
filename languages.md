@@ -3,37 +3,46 @@ Languages I will probably use:
 - Awk
 - Hack
 - Julia
+- Joy
 - Nim
 - Moonscript
 - Prolog (SWI? YAP?)
-- Zig
 
 List of languages (or language-like things) I haven't used yet:
 
 - Ada
 - Alice
 - ANTLR
-- Assembly (NASM?)
+- APL (I've heard it come up a number of times, though)
+- Assembly (NASM? GNU Assembler? Are these different "languages"?)
+- Brainf***
 - Chapel
 - Clojure (via joker?)
 - COBOL
-- Crystal
+- CoffeeScript
 - D
 - Dart
 - Delphi/Object Pascal
 - Elm
 - Fortran
-- Groovy
+- F#
 - Icon (?)
 - Ioke
-- J (?)
-- Kotlin (Too similar to Java & JavaScript?)
+- J
+- K
+- Lily
 - Logo
 - Maple
 - Mercury
-- ML (Standard ML? OCaml? Reason? Poly (SML)?)
+- ML
+    - Reason
+    - Poly SML
+    - NJ SML
+    - ...more?
 - Nadeshiko (なでしこ) https://nadesi.com
+- Nim
 - Objective C
+- Pharo
 - PHP
 - Powershell
 - Produire (プロデル) https://rdr.utopiat.net
@@ -41,15 +50,15 @@ List of languages (or language-like things) I haven't used yet:
 - Ring (?)
 - Scala
 - Scratch
+- Self
 - Smalltalk
 - Swift (can this be done on *nix?)
-- Tcl
 - TTSneo http://tts.utopiat.net
+- Wren
 
 Languages I have zero experience or exposure to, some may not
 even be turing-complete or "total programming" languages:
 
-- APL (I've heard it come up a number of times, though)
 - bc (Used for calculator/bash script, but no clue what it can really do)
 - bish
 - chibi-scheme
@@ -58,7 +67,7 @@ even be turing-complete or "total programming" languages:
 - CUDA (gpu low level)
 - eukleides
 - execline
-- faust (real time signal processing)
+- faust (real time signal processing?)
 - genius
 - ghostscript
 - grap
@@ -73,6 +82,7 @@ even be turing-complete or "total programming" languages:
 - OpenCL
 - parrot
 - pony
+- postscript
 - ragel (FSM)
 - rapyscript-ng
 - rix
@@ -84,6 +94,4 @@ even be turing-complete or "total programming" languages:
 - tab
 - tml (terminal markup language!?)
 - txr
-- wren
 - YANG
-
