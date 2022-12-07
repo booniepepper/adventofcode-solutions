@@ -11,6 +11,7 @@ Languages I will probably use:
 List of languages (or language-like things) I haven't used yet:
 
 - Ada
+- ALGOL
 - Alice
 - ANTLR
 - APL (I've heard it come up a number of times, though)
@@ -52,6 +53,7 @@ List of languages (or language-like things) I haven't used yet:
 - Scratch
 - Self
 - Smalltalk
+- SNOBOL
 - Swift (can this be done on *nix?)
 - TTSneo http://tts.utopiat.net
 - Wren
