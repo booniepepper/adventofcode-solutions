@@ -1,6 +1,5 @@
 Languages I will probably use:
 
-- Awk
 - Hack
 - Julia
 - Joy
