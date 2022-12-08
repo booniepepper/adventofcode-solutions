@@ -1,18 +1,11 @@
 #!/usr/bin/awk -f
 
-function fs_index(dirs, dir_n,    i) {
-    fsi = ""
-
+function fs_index(dirs, dir_n,    fsi, i) {
     for (i = 1; i <= dir_n; i++) {
         fsi = sprintf("%s%s%s", fsi, SUBSEP, dirs[i])
     }
 
     return fsi
-}
-
-function print_fs_index(fsi) {
-    gsub(/\034/, ":", fsi)
-    printf "%s\n", fsi
 }
 
 function add_size(fs, dirs, dir_n, size,    i) {
@@ -28,12 +21,6 @@ BEGIN {
 
     dir = root_dir
     dir_n = 0
-
-    dirs[dir_n] = dir
-    delete dirs[dir_n]
-    
-    fs["dummy"] = "dummy"
-    delete fs["dummy"]
 }
 
 /^\$ cd [^\.]+/ {
@@ -60,17 +47,13 @@ BEGIN {
 
 /^[0-9]+/ {
     fsi = fs_index(dirs, dir_n)
-
-    size = $1
-
-    add_size(fs, dirs, dir_n, size)
+    add_size(fs, dirs, dir_n, $1)
 }
 
 END {
-    summed = ""
+    must_free = fs[SUBSEP "/"]["_size"] - 40000000
+    closest = 70000000
 
-    sum_1 = 0
-    
     for (key in fs) {
         size = fs[key]["_size"]
 
@@ -79,27 +62,17 @@ END {
             summed = sprintf("%s, %s", summed, key)
             sum_1 += size
         }
-    }
-
-    gsub(/^, /, "", summed)
-
-    printf "%d (%s)\n", sum_1, summed
-
-    must_free = fs[SUBSEP "/"]["_size"] - 40000000
-
-    closest_dir = "unknown"
-    closest = 70000000
-
-    for (key in fs) {
-        size = fs[key]["_size"]
-
+    
         if (must_free <= size && size < closest) {
             gsub(SUBSEP, ":", key)
             closest_dir = key
             closest = size
         }
     }
-    
+
+    gsub(/^, /, "", summed)
+
+    printf "%d (%s)\n", sum_1, summed
     printf "%d (%s)\n", closest, closest_dir
 }
 
