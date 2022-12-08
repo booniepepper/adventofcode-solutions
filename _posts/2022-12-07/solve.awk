@@ -8,7 +8,7 @@ function fs_index(dirs, dir_n,    fsi, i) {
     return fsi
 }
 
-function add_size(fs, dirs, dir_n, size,    i) {
+function add_size(fs, dirs, dir_n, size,    fsi, i) {
     for (i = 1; i <= dir_n; i++) {
         fsi = fs_index(dirs, i)
 
