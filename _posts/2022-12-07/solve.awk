@@ -67,17 +67,39 @@ BEGIN {
 }
 
 END {
+    summed = ""
+
     sum_1 = 0
     
     for (key in fs) {
         size = fs[key]["_size"]
-        gsub(/\034/, ":", key)
 
         if (size < 100000) {
+            gsub(SUBSEP, ":", key)
+            summed = sprintf("%s, %s", summed, key)
             sum_1 += size
         }
     }
 
-    print sum_1
+    gsub(/^, /, "", summed)
+
+    printf "%d (%s)\n", sum_1, summed
+
+    must_free = fs[SUBSEP "/"]["_size"] - 40000000
+
+    closest_dir = "unknown"
+    closest = 70000000
+
+    for (key in fs) {
+        size = fs[key]["_size"]
+
+        if (must_free <= size && size < closest) {
+            gsub(SUBSEP, ":", key)
+            closest_dir = key
+            closest = size
+        }
+    }
+    
+    printf "%d (%s)\n", closest, closest_dir
 }
 
