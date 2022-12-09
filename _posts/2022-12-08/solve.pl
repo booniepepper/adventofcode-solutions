@@ -10,13 +10,25 @@ main :-
 
     halt.
 
+% --- Misc utility ---
+
+rotate(Goal, As, Bs) :-
+    transpose(As, AsRot),
+    call(Goal, AsRot, BsRot),
+    transpose(BsRot, Bs).
+
+mirror(Goal, As, Bs) :-
+    maplist(reverse, As, AsRev),
+    call(Goal, AsRev, BsRev),
+    maplist(reverse, BsRev, Bs).
+
 % --- Stuff for part 1 ---
 
 solve_1(Trees, Sum) :-
-    visible_from_n(Trees, N),
-    visible_from_e(Trees, E),
-    visible_from_s(Trees, S),
     visible_from_w(Trees, W),
+    visible_from_e(Trees, E),
+    rotate(visible_from_w, Trees, N),
+    rotate(visible_from_e, Trees, S),
     count_visibles(N, E, S, W, Sum).
 
 count_visibles(A, B, C, D, Sum) :-
@@ -26,27 +38,11 @@ count_visibles(A, B, C, D, Sum) :-
 
 merge_visibles([A|As], [B|Bs], [C|Cs], [D|Ds], [N|Ns]) :-
         merge_visibles(As, Bs, Cs, Ds, Ns),
-        (
-            (A =:= 1 ; B =:= 1 ; C =:= 1 ; D =:= 1)
-        ->  N is 1
-        ;   N is 0
-        ).
+        (member(1, [A,B,C,D]) -> N is 1 ; N is 0 ).
 merge_visibles([], [], [], [], []).
 
-visible_from_n(Trees, Visibles) :-
-    transpose(Trees, TreesRot),
-    visible_from_w(TreesRot, VisiblesRot),
-    transpose(VisiblesRot, Visibles).
-
-visible_from_s(Trees, Visibles) :-
-    transpose(Trees, TreesRot),
-    visible_from_e(TreesRot, VisiblesRot),
-    transpose(VisiblesRot, Visibles).
-
 visible_from_e(Trees, Visibles) :-
-    maplist(reverse, Trees, TreesRev),
-    visible_from_w(TreesRev, VisiblesRev),
-    maplist(reverse, VisiblesRev, Visibles).
+    mirror(visible_from_w, Trees, Visibles).
 
 visible_from_w(Trees, Visibles) :-
     maplist(visible_from_w(-1), Trees, Visibles).
