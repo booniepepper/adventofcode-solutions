@@ -42,7 +42,7 @@ BEGIN {
     delete dirs[dir_n]
     dir_n--
 
-    fs[fsi][_size] = 0
+    fs[fsi]["_size"] = 0
 }
 
 /^[0-9]+/ {
