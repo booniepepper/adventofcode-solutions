@@ -6,6 +6,7 @@ Languages I will probably use:
 - Nim
 - Moonscript
 - Prolog (SWI? YAP?)
+- Vmgen
 
 List of languages (or language-like things) I haven't used yet:
 
