@@ -12,11 +12,12 @@ List of languages (or language-like things) I haven't used yet:
 
 - Ada
 - ALGOL
-- Alice
+- Alice ML
 - ANTLR
 - APL (I've heard it come up a number of times, though)
 - Assembly (NASM? GNU Assembler? Are these different "languages"?)
 - Brainf***
+- Ceylon
 - Chapel
 - Clojure (via joker?)
 - COBOL
@@ -27,6 +28,7 @@ List of languages (or language-like things) I haven't used yet:
 - Elm
 - Fortran
 - F#
+- Haxe
 - Icon (?)
 - Ioke
 - J
@@ -56,6 +58,7 @@ List of languages (or language-like things) I haven't used yet:
 - SNOBOL
 - Swift (can this be done on *nix?)
 - TTSneo http://tts.utopiat.net
+- Vala
 - Wren
 
 Languages I have zero experience or exposure to, some may not
