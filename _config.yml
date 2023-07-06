@@ -9,10 +9,10 @@ remote_theme: b2a3e8/jekyll-theme-console
 
 style: dark
 
-title: 'a hiljusti polyglot adventure | Advent of Code 2020 Solutions'
-description: 'a hiljusti polyglot adventure | Advent of Code 2020 Solutions'
+title: 'a polyglot adventure | Advent of Code Solutions'
+description: 'a polyglot adventure | Advent of Code Solutions'
 baseurl: '/adventofcode-solutions'
-url: 'https://hiljusti.github.io'
+url: 'https://booniepepper.github.io'
 
 header_pages:
   - so-dang-cool.md
