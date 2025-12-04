@@ -1,0 +1,16 @@
+#!/usr/bin/env joker
+
+(require '[joker.string :as str]
+         '[joker.strconv :as strconv])
+
+(def zeroes (atom 0))
+(def position (atom 50))
+
+(doseq
+  [line (line-seq *in*)]
+  (let [n (strconv/parse-int (str/replace (str/replace line "R" "") "L" "-") 0 0)]
+    (reset! position (mod (+ @position n) 100))
+    (if (= 0 @position)
+      (reset! zeroes (inc @zeroes)))))
+
+(println @zeroes)
