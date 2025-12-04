@@ -5,7 +5,6 @@ Languages I will probably use:
 - Joy
 - Nim
 - Moonscript
-- Prolog (SWI? YAP?)
 - Vmgen
 
 List of languages (or language-like things) I haven't used yet:
@@ -25,6 +24,7 @@ List of languages (or language-like things) I haven't used yet:
 - D
 - Dart
 - Delphi/Object Pascal
+- dt
 - Elm
 - Fortran
 - F#
