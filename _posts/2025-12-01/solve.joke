@@ -4,13 +4,21 @@
          '[joker.strconv :as strconv])
 
 (def zeroes (atom 0))
+(def passes (atom 0))
 (def position (atom 50))
 
 (doseq
   [line (line-seq *in*)]
   (let [n (strconv/parse-int (str/replace (str/replace line "R" "") "L" "-") 0 0)]
-    (reset! position (mod (+ @position n) 100))
+    (reset! position (+ @position n))
+    (while (< @position 0)
+      (reset! passes (inc @passes))
+      (reset! position (+ @position 100)))
+    (while (>= @position 100)
+      (reset! passes (inc @passes))
+      (reset! position (- @position 100)))
     (if (= 0 @position)
       (reset! zeroes (inc @zeroes)))))
 
-(println @zeroes)
+(println "Zeroes: " @zeroes " (Solution 1)")
+(println "Passes: " @passes " (Solution 2)")
